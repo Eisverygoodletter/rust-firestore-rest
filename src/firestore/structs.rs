@@ -1,6 +1,15 @@
 use super::{document_container, collection_container};
+use reqwest;
+
+/// Representation of a Firestore database REST origin
+/// see `FirestoreBuilder` for more details
 pub struct Firestore {
     pub db_url: String,
+    pub(crate) reqwest_client: reqwest::Client,
+}
+
+pub struct FirestoreBuilder {
+    pub(crate) db_url: String,
 }
 
 pub struct Collection<'collection_lifetime> {
